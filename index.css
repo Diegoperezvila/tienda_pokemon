@@ -1,0 +1,31 @@
+/* Carrusel */
+
+.carrusel-container {
+  overflow: hidden;
+  width: 100%;
+  height: 200px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.carrusel {
+  display: flex;
+  animation: desplazamiento 25s linear infinite; /* Aseguramos que el tiempo sea suficiente para todas las imágenes */
+}
+
+.carrusel img {
+  height: 200px;
+  width: auto;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Animación de desplazamiento */
+@keyframes desplazamiento {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-85%); /* Desplaza todo el contenido */
+  }
+}

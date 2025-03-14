@@ -1,0 +1,17 @@
+.btnAcciones {
+    width: 60%;
+    margin-bottom: 15px; 
+}
+
+.btnAcciones button{
+    padding: 10px;
+    background-color: yellow;
+    border-radius: 15px;
+}
+
+.btnAcciones button:hover{
+    padding: 10px;
+    background-color: blue;
+    color: white;
+}
+
