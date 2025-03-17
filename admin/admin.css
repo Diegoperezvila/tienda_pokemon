@@ -5,14 +5,14 @@
 
 .btnAcciones button{
     padding: 10px;
-    background-color: yellow;
+    background-color: #edbd40;
     border-radius: 15px;
 }
 
 .btnAcciones button:hover{
-    padding: 10px;
-    background-color: blue;
-    color: white;
+  transform: scale(1.2);
+  background-color: #edbd40;
+  color: black;
 }
 
 nav {

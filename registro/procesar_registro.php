@@ -61,7 +61,7 @@ try {
         'correo' => $correo,
         'rol' => 'usuario',
         'password' => $passwordHash,
-        'carrito' => []
+        'cartera' => 0
     ]);
 
     if ($resultado->getInsertedCount() == 1) {

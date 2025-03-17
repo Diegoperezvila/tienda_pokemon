@@ -13,6 +13,7 @@ if (isset($_SESSION['usuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Inicio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -65,6 +66,9 @@ if (isset($_SESSION['usuario'])) {
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="perfil.php">Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="wallet.php"><i class="bi bi-wallet2 mx-1"></i><span id="wallet"></span></a>
                 </li>
                 <?php if ($_SESSION['rol'] == "admin"): ?>
                     <li class="nav-item d-lg-none">
@@ -202,6 +206,7 @@ if (isset($_SESSION['usuario'])) {
 
 
 <script src="procesarLogin.js"></script>
+<script src="mostrarSaldo.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

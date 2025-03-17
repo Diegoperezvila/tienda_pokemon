@@ -67,6 +67,9 @@ if (isset($_SESSION['usuario'])) {
                 <li class="nav-item">
                     <a class="nav-link text-white" href="perfil.php">Perfil</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="wallet.php"><i class="bi bi-wallet2 mx-1"></i><span id="wallet"></span></a>
+                </li>
                 <?php if ($_SESSION['rol'] == "admin"): ?>
                     <li class="nav-item d-lg-none">
                     <a class="nav-link text-white" href="../admin/">Admin</a>
@@ -110,5 +113,6 @@ if (isset($_SESSION['usuario'])) {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="probabilidades.js"></script>
+    <script src="mostrarSaldo.js"></script>
 </body>
 </html>

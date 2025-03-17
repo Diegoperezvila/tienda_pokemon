@@ -40,6 +40,9 @@ if (!isset($_SESSION['usuario'])) {
                 <li class="nav-item">
                     <a class="nav-link text-white" href="../perfil.php">Perfil</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="wallet.php"><i class="bi bi-wallet2 mx-1"></i><span id="wallet"></span></a>
+                </li>
                 <?php if ($_SESSION['rol'] == "admin"): ?>
                 <li class="nav-item d-lg-none">
                     <a class="nav-link text-white" href="../admin/">Admin</a>
@@ -71,21 +74,17 @@ if (!isset($_SESSION['usuario'])) {
     </div>
 
 
-<!-- Modal -->
 <div class="modal fade" id="modalSobre" tabindex="-1" aria-labelledby="modalSobreLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalSobreLabel">Imagen del Sobre</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
       <div class="modal-body d-flex justify-content-center align-items-center flex-column">
-        <!-- Imagen del sobre inicial que será reemplazada -->
-        <img id="modalImg" src="../img/ejemplo.png" alt="Sobre" class="img-fluid" style="cursor: pointer; max-height: 300px; max-width: auto; object-fit: contain;">
+        <img id="modalImg" src="../img/ejemplo.png" alt="Sobre" class="img-fluid" style="cursor: pointer; max-height: 300px; object-fit: contain;">
         
-        <!-- Contenedor para la información de la carta -->
         <div id="cardInfo" class="mt-3 text-center">
-          <!-- Aquí se mostrará la info de la carta -->
         </div>
       </div>
     </div>
@@ -95,7 +94,9 @@ if (!isset($_SESSION['usuario'])) {
 
 
 
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="verSobres.js"></script>
+    <script src="mostrarSaldo.js"></script>
 </body>
 </html>
