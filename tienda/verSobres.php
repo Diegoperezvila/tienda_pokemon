@@ -24,7 +24,8 @@ try {
             "nombre" => $document["nombre"],
             "api" => $document["api"],
             "img" => "../img/" . $document["img"],
-            "precio" => $document["precio"]
+            "precio" => $document["precio"],
+            "stock" => $document["stock"]
         ];
     }
 

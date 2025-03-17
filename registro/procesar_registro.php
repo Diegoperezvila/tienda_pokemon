@@ -60,7 +60,8 @@ try {
         'usuario' => $usuario,
         'correo' => $correo,
         'rol' => 'usuario',
-        'password' => $passwordHash
+        'password' => $passwordHash,
+        'carrito' => []
     ]);
 
     if ($resultado->getInsertedCount() == 1) {

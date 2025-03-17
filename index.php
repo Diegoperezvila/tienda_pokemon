@@ -18,14 +18,14 @@ if (isset($_SESSION['usuario'])) {
 <body>
 
 <?php if (!$registrado): ?>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light p-3 pb-0 m-0">
+    <nav class="navbar navbar-expand-lg navbar-light p-3 pb-0 m-0">
         <div class="container-fluid m-0">
             <a class="navbar-brand d-flex align-items-center" href="./">
                 <img src="img/logo.png" alt="Logo" height="75" class="d-inline-block align-top">
             </a>
 
             <a href="registro/" class="order-lg-1">
-                <button class="btn btn-primary btn-sm">Registro</button>
+                <button class="btn btnNav btn-sm">Registro</button>
             </a>
 
             <button class="navbar-toggler order-lg-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
@@ -37,19 +37,19 @@ if (isset($_SESSION['usuario'])) {
                 <form class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 mx-auto" id="inicioForm">
                     <input type="text" class="form-control form-control-sm" id="inputUser" placeholder="Usuario">
                     <input type="password" class="form-control form-control-sm" id="inputPassword" placeholder="Contraseña">
-                    <button type="submit" class="btn btn-primary btn-sm">Login</button>
+                    <button type="submit" class="btn btnNav btn-sm">Login</button>
                 </form>
             </div>
         </div>
     </nav>
 <?php else: ?>
-<nav class="navbar navbar-expand-lg navbar-light bg-light p-3 pb-0 m-0">
+<nav class="navbar navbar-expand-lg navbar-light p-3 pb-0 m-0">
     <div class="container-fluid m-0">
         <div class="d-flex flex-column flex-lg-row align-items-lg-center">
             <a class="navbar-brand text-dark" href="./">
                 <img src="img/logo.png" alt="Logo" height="75" class="d-inline-block align-top">
             </a>
-            <span class="ms-2 d-block text-center text-lg-start">Bienvenido, <?php echo $_SESSION['usuario']; ?>!</span>
+            <span class="ms-2 d-block text-center text-white text-lg-start">Bienvenido, <?php echo $_SESSION['usuario']; ?>!</span>
         </div>
 
 
@@ -61,25 +61,30 @@ if (isset($_SESSION['usuario'])) {
         <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="./tienda/">Tienda</a>
+                    <a class="nav-link text-white" href="./tienda/">Tienda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="perfil.php">Perfil</a>
+                    <a class="nav-link text-white" href="perfil.php">Perfil</a>
                 </li>
                 <?php if ($_SESSION['rol'] == "admin"): ?>
-                    <li class="nav-item">
-                    <a class="nav-link text-dark" href="./admin/">Continuar como admin</a>
+                    <li class="nav-item d-lg-none">
+                    <a class="nav-link text-white" href="./admin/">Cerrar Sesión</a>
                 </li>
                 <?php endif; ?>
                 <li class="nav-item d-lg-none">
-                    <a class="nav-link text-danger" href="./cerrarSesion.php">Cerrar Sesión</a>
+                    <a class="nav-link text-white" href="./cerrarSesion.php">Cerrar Sesión</a>
                 </li>
             </ul>
         </div>
 
         <div class="d-none d-lg-flex">
+        <?php if ($_SESSION['rol'] == "admin"): ?>
+            <a href="./admin/">
+                <button class="btn btnNav btn-sm me-2">Admin</button>
+            </a>
+                <?php endif; ?>
             <a href="./cerrarSesion.php">
-                <button class="btn btn-danger btn-sm">Cerrar Sesión</button>
+                <button class="btn btnNav btn-sm">Cerrar Sesión</button>
             </a>
         </div>
     </div>
@@ -90,11 +95,11 @@ if (isset($_SESSION['usuario'])) {
 
 
 <div class="container-fluid m-0 p-0">
-    <div class="row g-0 p-5 d-flex align-items-center justify-content-center text-center" style="background-color: black;">
+    <div class="row g-0 p-5 d-flex align-items-center justify-content-center text-center ppalIndex">
         <div class="col-12 col-md-5 p-2 d-flex flex-column align-items-center align-items-md-start text-md-start text-white">
             <h1>AMPLIA TU MUNDO DE POKEMON TCG</h1>
             <h3>Abre sobres y llévate las mejores cartas</h3>
-            <a href="./tienda/"><button class="btn btn-primary btn-sm mt-3">Abrir Sobres</button></a>
+            <a href="./tienda/"><button class="btn btnNav btn-sm mt-3">Abrir Sobres</button></a>
             
         </div>
     
