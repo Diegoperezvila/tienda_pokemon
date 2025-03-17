@@ -1,12 +1,5 @@
 <?php
 session_start();
-if (isset($_SESSION['rol'])) {
-    if ($_SESSION['rol'] == "admin") {
-        header("Location: admin");
-        exit();
-    }
-}
-
 $registrado = false;
 if (isset($_SESSION['usuario'])) {
     $registrado = true;
@@ -68,11 +61,16 @@ if (isset($_SESSION['usuario'])) {
         <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="perfil.php">Perfil</a>
+                    <a class="nav-link text-dark" href="./tienda/">Tienda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="dashboard.php">Dashboard</a>
+                    <a class="nav-link text-dark" href="perfil.php">Perfil</a>
                 </li>
+                <?php if ($_SESSION['rol'] == "admin"): ?>
+                    <li class="nav-item">
+                    <a class="nav-link text-dark" href="./admin/">Continuar como admin</a>
+                </li>
+                <?php endif; ?>
                 <li class="nav-item d-lg-none">
                     <a class="nav-link text-danger" href="./cerrarSesion.php">Cerrar Sesión</a>
                 </li>
@@ -96,7 +94,7 @@ if (isset($_SESSION['usuario'])) {
         <div class="col-12 col-md-5 p-2 d-flex flex-column align-items-center align-items-md-start text-md-start text-white">
             <h1>AMPLIA TU MUNDO DE POKEMON TCG</h1>
             <h3>Abre sobres y llévate las mejores cartas</h3>
-            <a href="dashboard/"><button class="btn btn-primary btn-sm mt-3">Abrir Sobres</button></a>
+            <a href="./tienda/"><button class="btn btn-primary btn-sm mt-3">Abrir Sobres</button></a>
             
         </div>
     
@@ -124,7 +122,7 @@ if (isset($_SESSION['usuario'])) {
   </div>
 
   <div class="container-fluid m-0 p-0">
-    <div class="row p-5">
+    <div class="row p-5 m-0">
         <div class="col-12 col-md-6 p-3">
             <h2 class="text-center">Formulario de Contacto</h2>
             <form action="#" method="post">
