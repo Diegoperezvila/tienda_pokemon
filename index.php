@@ -68,7 +68,7 @@ if (isset($_SESSION['usuario'])) {
                     <a class="nav-link text-white" href="perfil.php">Perfil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="wallet.php"><i class="bi bi-wallet2 mx-1"></i><span id="wallet"></span></a>
+                    <a class="nav-link text-white" href="wallet.php"><i class="bi bi-wallet2 mx-1"></i><span id="wallet"></span>€</a>
                 </li>
                 <?php if ($_SESSION['rol'] == "admin"): ?>
                     <li class="nav-item d-lg-none">
@@ -115,18 +115,30 @@ if (isset($_SESSION['usuario'])) {
 
 <div class="carrusel-container">
     <div class="carrusel">
-        <a href="#"><img src="img/evolucionesPrismaticas.png" alt="evolucionesPrismaticas"></a>
-        <a href="#"><img src="img/chispasFulgrulantes.png" alt="chispasFulgrulantes"></a>
-        <a href="#"><img src="img/coronaAstral.png" alt="coronaAstral"></a>
-        <a href="#"><img src="img/fabulaSombria.png" alt="fabulaSombria"></a>
-        <a href="#"><img src="img/mascaradaCrepuscular.png" alt="mascaradaCrepuscular"></a>
-        <a href="#"><img src="img/fuerzasTemporales.png" alt="fuerzasTemporales"></a>
-        <a href="#"><img src="img/destinosPaldea.png" alt="destinosPaldea"></a>
-        <a href="#"><img src="img/brechaParadojica.png" alt="brechaParadojica"></a>
-        <a href="#"><img src="img/151.png" alt="151"></a>
-        <a href="#"><img src="img/llamasObsidianas.png" alt="llamasObsidianas"></a>
-        <a href="#"><img src="img/evolucionesPaldea.png" alt="evolucionesPaldea"></a>
-        <a href="#"><img src="img/escarlataPurpura.png" alt="escarlataPurpura"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=evoluciones-prismaticas"><img src="img/evolucionesPrismaticas.png" alt="evolucionesPrismaticas"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=chispas-fulgrulantes"><img src="img/chispasFulgrulantes.png" alt="chispasFulgrulantes"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=corona-astral"><img src="img/coronaAstral.png" alt="coronaAstral"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=fabula-sombria"><img src="img/fabulaSombria.png" alt="fabulaSombria"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=mascarada-crepuscular"><img src="img/mascaradaCrepuscular.png" alt="mascaradaCrepuscular"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=fuerzas-temporales"><img src="img/fuerzasTemporales.png" alt="fuerzasTemporales"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=destinos-paldea"><img src="img/destinosPaldea.png" alt="destinosPaldea"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=brecha-paradojica"><img src="img/brechaParadojica.png" alt="brechaParadojica"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=151"><img src="img/151.png" alt="151"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=llamas-obsidianas"><img src="img/llamasObsidianas.png" alt="llamasObsidianas"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=evoluciones-paldea"><img src="img/evolucionesPaldea.png" alt="evolucionesPaldea"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=escarlata-purpura"><img src="img/escarlataPurpura.png" alt="escarlataPurpura"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=evoluciones-prismaticas"><img src="img/evolucionesPrismaticas.png" alt="evolucionesPrismaticas"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=chispas-fulgrulantes"><img src="img/chispasFulgrulantes.png" alt="chispasFulgrulantes"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=corona-astral"><img src="img/coronaAstral.png" alt="coronaAstral"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=fabula-sombria"><img src="img/fabulaSombria.png" alt="fabulaSombria"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=mascarada-crepuscular"><img src="img/mascaradaCrepuscular.png" alt="mascaradaCrepuscular"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=fuerzas-temporales"><img src="img/fuerzasTemporales.png" alt="fuerzasTemporales"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=destinos-paldea"><img src="img/destinosPaldea.png" alt="destinosPaldea"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=brecha-paradojica"><img src="img/brechaParadojica.png" alt="brechaParadojica"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=151"><img src="img/151.png" alt="151"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=llamas-obsidianas"><img src="img/llamasObsidianas.png" alt="llamasObsidianas"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=evoluciones-paldea"><img src="img/evolucionesPaldea.png" alt="evolucionesPaldea"></a>
+        <a href="./tienda/probabilidades-cartas.php?texto=escarlata-purpura"><img src="img/escarlataPurpura.png" alt="escarlataPurpura"></a>
     </div>
   </div>
 
@@ -162,7 +174,7 @@ if (isset($_SESSION['usuario'])) {
                     </h2>
                     <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            Para abrir un sobre, debes ir a la sección de "Dashboard" y hacer clic en el botón "Abrir Sobres". Ahí podrás elegir qué sobre deseas abrir.
+                            Para abrir un sobre, debes ir a la sección de "Tienda" y hacer clic en el botón del "Carrito" en el sobre que desees. Recuedad que debes tener saldo disponible para adquirir un sobre.
                         </div>
                     </div>
                 </div>

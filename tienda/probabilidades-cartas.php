@@ -16,6 +16,8 @@ if (isset($_SESSION['usuario'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="probabilidades.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 </head>
 <body>
 <?php if (!$registrado): ?>
@@ -68,7 +70,7 @@ if (isset($_SESSION['usuario'])) {
                     <a class="nav-link text-white" href="perfil.php">Perfil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="wallet.php"><i class="bi bi-wallet2 mx-1"></i><span id="wallet"></span></a>
+                    <a class="nav-link text-white" href="wallet.php"><i class="bi bi-wallet2 mx-1"></i><span id="wallet"></span>€</a>
                 </li>
                 <?php if ($_SESSION['rol'] == "admin"): ?>
                     <li class="nav-item d-lg-none">
@@ -99,6 +101,7 @@ if (isset($_SESSION['usuario'])) {
 
 
 <div class="container mt-5">
+<button id="generarPDF" class="btn btn-primary">Generar PDF</button>    
     <h2 class="text-center">PROBABILIDADES</h2>
     <div class="row mb-3" id="probabilidades" class="d-flex justify-content-center">
 

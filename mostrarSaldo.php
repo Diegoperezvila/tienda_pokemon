@@ -22,8 +22,11 @@ try {
     $data = json_decode(file_get_contents("php://input"), true);
     $nombre = isset($data['nombre']) ? trim($data['nombre']) : "";
 
+    // Depuración: Mostrar nombre buscado
+    error_log("Buscando usuario: " . $nombre);
+
     // Si se proporciona un nombre, filtrar por usuario
-    $filter = ($nombre !== "") ? ['usuario' => $nombre] : [];
+    $filter = ($nombre !== "") ? ['usuario' => $nombre] : ['usuario' => $usuario];
 
     // Seleccionar solo el campo 'cartera'
     $options = ['projection' => ['cartera' => 1, '_id' => 0]];
@@ -31,7 +34,8 @@ try {
     $result = $collection->findOne($filter, $options);
 
     if ($result) {
-        echo json_encode(["status" => "success", "cartera" => $result['cartera']], JSON_PRETTY_PRINT);
+        $cartera = isset($result['cartera']) ? (float) $result['cartera'] : 0.0; // Asegurar que sea un número
+        echo json_encode(["status" => "success", "cartera" => $cartera], JSON_PRETTY_PRINT);
     } else {
         echo json_encode(["status" => "error", "message" => "Usuario no encontrado"]);
     }

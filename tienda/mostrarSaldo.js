@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 if (data.status === "success") {
-                    document.getElementById("wallet").textContent = data.cartera + " €"; 
+                    document.getElementById("wallet").textContent = data.cartera; 
                 } else {
                     console.error("Error al obtener el saldo:", data.message);
                 }

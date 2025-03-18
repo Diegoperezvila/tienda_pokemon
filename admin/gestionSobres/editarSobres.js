@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <input type="text" name="nombre" class="form-control mb-2" value="${sobre.nombre}" readonly>
                            
                             <label>Precio (€):</label>
-                            <input type="number" name="precio" class="form-control mb-2" value="${sobre.precio}">
+                            <input type="number" name="precio" class="form-control mb-2" value="${sobre.precio}" min="0">
                            
                             <label>Stock:</label>
                             <input type="number" name="stock" class="form-control mb-2" value="${sobre.stock}">

@@ -1,3 +1,18 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    header("Location: ../");
+    exit();
+}
+if (isset($_SESSION['rol'])) {
+    if($_SESSION['rol']!="admin"){
+        header("Location: ../");
+        exit();
+    }
+    
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -51,12 +66,16 @@
     <div class="col-12 m-0">
         <div class="row m-0">
             <div class="col-12 col-md-4 p-3">
-                <h2 class="text-center">Últimas Aperturas</h2>
-                <div class="col-12 ultimosPedidos"></div>
+                <h2 class="text-center">Últimas 5 Aperturas</h2>
+                <div class="col-12" >
+                    <div class="row p-3" id="ultimosPedidos"></div>
+                </div>
             </div>
             <div class="col-12 col-md-4 p-3">
                 <h2 class="text-center">Cartas pedidas</h2>
-                <div class="col-12 cartasPedidas"></div>
+                <div class="col-12 ">
+                    <div class="row p-3" id="cartasPedidas"></div>
+                </div>
             </div>
             <div class="col-12 col-md-4 p-3">
                 <h2 class="text-center">Más acciones</h2>
@@ -84,7 +103,7 @@
   </footer>
 
 
-<script src="procesarLogin.js"></script>
+<script src="admin.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

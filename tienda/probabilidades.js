@@ -46,10 +46,8 @@ function mostrarRarezas(rarezasContadas, totalPokemon) {
 }
 
 function mostrarCartas(listaPokemon){
-    // Obtener el contenedor donde se mostrarán las cartas
     const cardContainer = document.getElementById('cartas');
 
-    // Mostrar las cartas en el contenedor
     listaPokemon.forEach(card => {
         const cardDiv = document.createElement('div');
         cardDiv.classList.add('card');
@@ -63,7 +61,36 @@ function mostrarCartas(listaPokemon){
             </div>
         `;
 
-        // Agregar la carta al contenedor
         cardContainer.appendChild(cardDiv);
     });
 }
+
+
+document.getElementById('generarPDF').addEventListener('click', function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const textoDeUrl = urlParams.get('texto');
+
+    doc.setFontSize(16);
+    doc.text('Lista de Cartas de Pokémon - ' + textoDeUrl, 10, 10);
+
+    let yPosition = 20;
+
+    listaPokemon.forEach((card, index) => {
+        const cardInfo = `${card.number} - ${card.name} - ${card.type} - ${card.rarity}`;
+        
+        doc.setFontSize(12);
+        doc.text(cardInfo, 10, yPosition);
+
+        yPosition += 10;
+
+        if (yPosition > 270) {
+            doc.addPage();
+            yPosition = 10;
+        }
+    });
+
+    doc.save(`${textoDeUrl}.pdf`);
+});

@@ -1,3 +1,18 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    header("Location: ../");
+    exit();
+}
+if (isset($_SESSION['rol'])) {
+    if($_SESSION['rol']!="admin"){
+        header("Location: ../");
+        exit();
+    }
+    
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -50,7 +65,6 @@
 <div class="container-fluid m-0 p-0 mt-2">
     <div class="col-12 m-0">
         <div class="row m-0" id="sobres">
-
         </div>
     </div>
 </div>

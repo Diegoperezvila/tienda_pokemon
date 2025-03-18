@@ -1,10 +1,9 @@
 <?php
-require '../../vendor/autoload.php';
+require '../vendor/autoload.php';
 
 use MongoDB\Client;
 use MongoDB\Driver\Exception\Exception;
 use MongoDB\Driver\ServerApi;
-use MongoDB\BSON\ObjectId;
 
 header("Content-Type: application/json");
 
@@ -16,34 +15,33 @@ try {
     $database = $client->selectDatabase('Tienda');
     $collection = $database->selectCollection('Usuarios');
 
-    $inputJSON = file_get_contents('php://input');
-    $input = json_decode($inputJSON, true);
-
-    // Validaciones
-    if (!isset($input['id']) || !isset($input['cartera'])) {
-        echo json_encode(["status" => "error", "message" => "Faltan datos requeridos"]);
+    session_start();
+    if (!isset($_SESSION['usuario'])) {
+        echo json_encode(["status" => "error", "message" => "Usuario no autenticado"]);
         exit;
     }
 
-    $id = new ObjectId($input['id']);
-    $cartera = (float) $input['cartera']; // Asegurar que sea numérico
-    $rol = $input['rol'] ?? null; // Evitar errores si no se proporciona rol
+    $usuario = $_SESSION['usuario'];
+    $inputJSON = file_get_contents('php://input');
+    $input = json_decode($inputJSON, true);
 
-    // Construcción del array de actualización
-    $updateData = ['cartera' => $cartera];
-    if ($rol !== null) {
-        $updateData['rol'] = $rol;
+    if (!isset($input['cartera']) || !is_numeric($input['cartera'])) {
+        echo json_encode(["status" => "error", "message" => "Valor de cartera inválido"]);
+        exit;
     }
 
+    $cartera = floatval($input['cartera']);
+
+    // Actualizar directamente por usuario
     $updateResult = $collection->updateOne(
-        ['_id' => $id],
-        ['$set' => $updateData]
+        ['usuario' => $usuario],
+        ['$set' => ['cartera' => $cartera]]
     );
 
     if ($updateResult->getModifiedCount() > 0) {
         echo json_encode(["status" => "success", "message" => "Usuario actualizado correctamente."]);
     } else {
-        echo json_encode(["status" => "error", "message" => "No se pudo actualizar el usuario. El ID proporcionado no fue encontrado o no se realizaron cambios."]);
+        echo json_encode(["status" => "error", "message" => "No se realizaron cambios en la cartera."]);
     }
 } catch (Exception $e) {
     echo json_encode(["status" => "error", "message" => $e->getMessage()]);
