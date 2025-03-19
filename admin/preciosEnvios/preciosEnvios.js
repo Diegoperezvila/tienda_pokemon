@@ -73,6 +73,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 guardarCambios(id, this);
             });
         });
+
+        document.querySelectorAll(".nuevoEnvio").forEach(button => {
+            button.addEventListener("click", function () {
+                nuevoEnvio(this);
+            });
+        });
     }
 
     function guardarCambios(id, boton) {
@@ -105,6 +111,39 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             })
             .catch(error => console.error("Error en la actualización:", error));
+    }
+
+    function nuevoEnvio(boton) {
+        let tarjeta = boton.parentElement;
+
+        let empresa = tarjeta.querySelector("[name='empresa']").value;
+        let tipo = tarjeta.querySelector("[name='tipo']").value;
+        let precio = tarjeta.querySelector("[name='precio']").value;
+
+        let datosActualizados = {
+            empresa: empresa,
+            tipo: tipo,
+            precio: precio
+        };
+
+        fetch("nuevoEnvio.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: `empresa=${empresa}&tipo=${tipo}&precio=${precio}`,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.error) {
+                console.error("Error:", data.error);
+              } else {
+                console.log("Éxito:", data.mensaje);
+                fetchEnvios();
+              }
+            })
+            .catch((error) => {
+              console.error("Error en la solicitud:", error);
+            });
+          
     }
 
     fetchEnvios();
