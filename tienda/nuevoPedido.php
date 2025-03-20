@@ -36,6 +36,7 @@ try {
     $empresaEnvio = $input['empresaEnvio'];
     $tipoEnvio = $input['tipoEnvio'];
     $precioEnvio = floatval($input['precioEnvio']);
+    $imagen = $input['imagen'];
 
     $pedido = [
         'usuario' => $usuario,
@@ -46,6 +47,7 @@ try {
         'tipoEnvio' => $tipoEnvio,
         'precioEnvio' => $precioEnvio,
         'fecha' => new \MongoDB\BSON\UTCDateTime(),
+        'imagen' => $imagen,
         'estado' => 'pedido'
     ];
 

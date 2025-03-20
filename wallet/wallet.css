@@ -1,0 +1,36 @@
+nav {
+    background-color: rgb(0, 43, 161);
+    border-bottom: 3px solid rgba(0, 34, 185, 0.603);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  }
+  
+  .btnNav {
+    background-color: #edbd40;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .btnNav:hover {
+    transform: scale(1.2);
+    background-color: #edbd40;
+    color: black;
+  }
+  
+  .navbar-toggler-icon {
+    filter: invert(1);
+  }
+
+
+/*Footer pegado al final*/
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex-grow: 1;
+}

@@ -85,7 +85,6 @@ if (isset($_SESSION['rol'])) {
                     <a href="./gestionEnvios/" class="btnAcciones"><button class="w-100 fw-bold">GESTIONAR ENVIOS</button></a>
                     <a href="./preciosCartas/" class="btnAcciones"><button class="w-100 fw-bold">EDITAR PRECIOS CARTAS</button></a>
                     <a href="./preciosEnvios/" class="btnAcciones"><button class="w-100 fw-bold">EDITAR PRECIOS ENVÍOS</button></a>
-                    <a href="./cuponesDescuento/" class="btnAcciones"><button class="w-100 fw-bold">CUPONES DESCUENTO</button></a>
                     <a href="./tickets/" class="btnAcciones"><button class="w-100 fw-bold">TICKETS</button></a>
                 </div>
             </div>

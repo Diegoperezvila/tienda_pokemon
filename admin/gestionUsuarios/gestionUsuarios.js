@@ -80,7 +80,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             if (data.status === "success") {
-                alert("Usuario actualizado correctamente");
                 fetchUsuarios("");
             } else {
                 console.error("Error al actualizar el usuario: " + data.message);

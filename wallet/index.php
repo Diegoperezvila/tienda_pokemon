@@ -14,7 +14,7 @@ if (!isset($_SESSION['usuario'])) {
     <title>Tienda</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="tienda.css">
+    <link rel="stylesheet" href="wallet.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light p-3 pb-0 m-0">
@@ -35,13 +35,13 @@ if (!isset($_SESSION['usuario'])) {
         <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Tienda</a>
+                    <a class="nav-link text-white" href="../tienda/">Tienda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="../perfil">Perfil</a>
+                    <a class="nav-link text-white" href="../perfil/">Perfil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="../wallet"><i class="bi bi-wallet2 mx-1"></i><span id="wallet"></span>€</a>
+                    <a class="nav-link text-white" href="#"><i class="bi bi-wallet2 mx-1"></i><span id="wallet"></span>€</a>
                 </li>
                 <?php if ($_SESSION['rol'] == "admin"): ?>
                 <li class="nav-item d-lg-none">
@@ -67,57 +67,22 @@ if (!isset($_SESSION['usuario'])) {
 
     </div>
 </nav>
-    <div class="container mt-5">
-        <div class="row" id="divTienda">
-            
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center">
+            <h3>Información Bancaria para Transferencia</h3>
+            <p><strong>Banco:</strong> Banco de Ejemplo S.A.</p>
+            <p><strong>Titular de la cuenta:</strong> PokeSobres S.A.</p>
+            <p><strong>Número de cuenta:</strong> ES12 3456 7890 1234 5678 9012</p>
+            <p><strong>IBAN:</strong> ES12 3456 7890 1234 5678 9012</p>
+            <p><strong>BIC / SWIFT:</strong> BEXAESMMXXX</p>
+            <p><strong>Concepto de pago:</strong> [Nombre de usuario] - [dd-mm-YYYY]</p>
+            <p><strong>Importe a transferir:</strong> [El deseado por el usuario] </p>
+            <p><strong>Tiempo estimado:</strong> 24/48 horas laborables </p>
         </div>
     </div>
-
-
-    <div class="modal fade" id="modalSobre" tabindex="-1" aria-labelledby="modalSobreLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-body d-flex justify-content-center align-items-center flex-column">
-        <img id="modalImg" src="../img/ejemplo.png" alt="Sobre" class="img-fluid" style="cursor: pointer; max-height: 300px; object-fit: contain;">
-        
-        <div id="cardInfo" class="mt-3 text-center">
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
-<div class="modal fade" id="modalEnvio" tabindex="-1" aria-labelledby="modalEnvioLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalEnvioLabel">Selecciona el tipo de envío</h5>
-      </div>
-      <div class="modal-body">
-        <ul id="tiposEnvioList" class="list-group">
-          <!-- Aquí se agregarán dinámicamente los tipos de envío -->
-        </ul>
-        <button id="mejorVender" class="btn btn-success w-100 mt-3">Mejor quiero venderlo</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modalSaldo" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        No hay Saldo. Recarga
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <footer>
   <div class="container-fluid m-0 p-0">
@@ -129,8 +94,9 @@ if (!isset($_SESSION['usuario'])) {
 
 
 
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="verSobres.js"></script>
     <script src="mostrarSaldo.js"></script>
 </body>
 </html>

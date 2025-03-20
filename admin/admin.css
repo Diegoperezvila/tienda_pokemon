@@ -36,3 +36,18 @@ nav {
     filter: invert(1);
   }
   
+  .rechazar:hover{
+    background-color: red !important;
+  }
+
+  .aceptar:hover{
+    background-color: green !important;
+  }
+  
+  #cartasPedidas {
+    max-height: 600px;
+    display: flex;
+    justify-content: start;
+    overflow-y: auto;
+    padding: 10px;
+}

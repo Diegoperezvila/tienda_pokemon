@@ -65,10 +65,10 @@ if (isset($_SESSION['usuario'])) {
                     <a class="nav-link text-white" href="./tienda/">Tienda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="perfil.php">Perfil</a>
+                    <a class="nav-link text-white" href="./perfil/">Perfil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="wallet.php"><i class="bi bi-wallet2 mx-1"></i><span id="wallet"></span>€</a>
+                    <a class="nav-link text-white" href="./wallet/"><i class="bi bi-wallet2 mx-1"></i><span id="wallet"></span>€</a>
                 </li>
                 <?php if ($_SESSION['rol'] == "admin"): ?>
                     <li class="nav-item d-lg-none">
@@ -181,24 +181,24 @@ if (isset($_SESSION['usuario'])) {
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="faqHeading2">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
-                            ¿Cómo puedo ver mi perfil?
+                            ¿Como añado saldo a mi Wallet?
                         </button>
                     </h2>
                     <div id="faq2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            Puedes ver tu perfil haciendo clic en el enlace "Perfil" en la barra de navegación, al lado de tu nombre.
+                            Para añadir saldo debes hacer click en tu wallet y enviar una transferencia a los datos que te indica.
                         </div>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="faqHeading3">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
-                            ¿Qué es el sistema de puntos?
+                            ¿Como contacto con vosotros?
                         </button>
                     </h2>
                     <div id="faq3" class="accordion-collapse collapse" aria-labelledby="faqHeading3" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            El sistema de puntos te permite ganar recompensas dentro del sitio al realizar actividades como abrir sobres o interactuar con contenido.
+                            Puedes crear un ticket en el formulario junto a esta sección. Te contestaremos en un plazo de 24/48 horas.
                         </div>
                     </div>
                 </div>
