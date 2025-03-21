@@ -1,5 +1,4 @@
 /* Carrusel */
-
 .carrusel-container {
   overflow: hidden;
   width: 100%;
@@ -10,7 +9,7 @@
 
 .carrusel {
   display: flex;
-  animation: desplazamiento 25s linear infinite; /* Aseguramos que el tiempo sea suficiente para todas las imágenes */
+  animation: desplazamiento 25s linear infinite;
 }
 
 .carrusel img {
@@ -26,14 +25,15 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-85%); /* Desplaza todo el contenido */
+    transform: translateX(-85%);
   }
 }
 
+/*Estilos nav*/
 nav {
   background-color: rgb(0, 43, 161);
   border-bottom: 3px solid rgba(0, 34, 185, 0.603);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -54,4 +54,23 @@ nav {
 
 .navbar-toggler-icon {
   filter: invert(1);
+}
+
+/*Estilos generales*/
+form {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+#contactForm .form-label {
+  font-weight: bold;
+}
+
+#contactForm .form-control {
+  border-radius: 8px;
+  padding: 12px;
+}
+
+#contactForm button.btn {
+  border-radius: 15px;
 }

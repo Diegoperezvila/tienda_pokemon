@@ -11,10 +11,10 @@ if (!isset($_SESSION['usuario'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wallet</title>
+    <title>Perfil</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="wallet.css">
+    <link rel="stylesheet" href="perfil.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light p-3 pb-0 m-0">
@@ -38,12 +38,12 @@ if (!isset($_SESSION['usuario'])) {
                     <a class="nav-link text-white" href="../tienda/">Tienda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="../perfil/">Perfil</a>
+                    <a class="nav-link text-white" href="#">Perfil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#"><i class="bi bi-wallet2 mx-1"></i><span id="wallet"></span>€</a>
+                    <a class="nav-link text-white" href="../wallet/"><i class="bi bi-wallet2 mx-1"></i><span id="wallet"></span>€</a>
                 </li>
-                <!-- Mostrar al rol admin -->
+                <!-- Mostrar si es rol admin -->
                 <?php if ($_SESSION['rol'] == "admin"): ?>
                 <li class="nav-item d-lg-none">
                     <a class="nav-link text-white" href="../admin/">Admin</a>
@@ -56,7 +56,7 @@ if (!isset($_SESSION['usuario'])) {
         </div>
 
         <div class="d-none d-lg-flex">
-            <!-- Mostrar al rol admin -->
+            <!-- Mostrar si es rol admin -->
     <?php if ($_SESSION['rol'] == "admin"): ?>
         <a href="../admin/">
             <button class="btn btnNav btn-sm me-2">Admin</button>
@@ -69,21 +69,57 @@ if (!isset($_SESSION['usuario'])) {
 
     </div>
 </nav>
-<div class="container mt-5 mb-5">
+<div class="container-fluid m-0 p-0 mt-2 mb-2">
     <div class="row justify-content-center">
-        <div class="col-12 text-center">
-            <h3>Información Bancaria para Transferencia</h3>
-            <p><strong>Banco:</strong> Banco de Ejemplo S.A.</p>
-            <p><strong>Titular de la cuenta:</strong> PokeSobres S.A.</p>
-            <p><strong>Número de cuenta:</strong> ES12 3456 7890 1234 5678 9012</p>
-            <p><strong>IBAN:</strong> ES12 3456 7890 1234 5678 9012</p>
-            <p><strong>BIC / SWIFT:</strong> BEXAESMMXXX</p>
-            <p><strong>Concepto de pago:</strong> [Nombre de usuario] - [dd-mm-YYYY]</p>
-            <p><strong>Importe a transferir:</strong> [El deseado por el usuario] </p>
-            <p><strong>Tiempo estimado:</strong> 24/48 horas laborables </p>
+        <div class="col-12 col-md-6 text-center">
+            <h3>Pedidos <button class="btn btn-outline-secondary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFilters" aria-controls="offcanvasFilters">
+                <i class="bi bi-filter-circle">Filtrar</i>
+            </button></h3>
+            <div class="row scroll" id="pedidos">
+                <!-- Mostrar pedidos vía js -->
+            </div>
+        </div>
+        <div class="col-12 col-md-6 text-center borde">
+            <h3>Últimas Aperturas</h3>
+            <div class="row scroll" id="aperturas">
+                <!-- Mostrar aperturas vía js -->
+            </div>
         </div>
     </div>
 </div>
+
+<!-- Offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasFilters" aria-labelledby="offcanvasFiltersLabel">
+    <div class="offcanvas-header">
+        <h5>Filtrar Pedidos</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form>
+        <div class="mb-3">
+                <label for="orden" class="form-label">Orden</label>
+                <select class="form-select" id="orden">
+                    <option value="" selected>Selecciona el orden</option>
+                    <option value="recientes">Más Recientes</option>
+                    <option value="antiguos">Más Antiguos</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="estado" class="form-label">Estado</label>
+                <select class="form-select" id="estado">
+                    <option value="" selected>Selecciona el estado</option>
+                    <option value="pedido">Pedidos</option>
+                    <option value="aceptado">Aceptado</option>
+                    <option value="rechazado">Rechazado</option>
+                    <option value="enviado">Enviado</option>
+                    <option value="completado">Completado</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Aplicar Filtros</button>
+        </form>
+    </div>
+</div>
+
 
 
 <footer>
@@ -100,5 +136,6 @@ if (!isset($_SESSION['usuario'])) {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="mostrarSaldo.js"></script>
+    <script src="mostrar.js"></script>
 </body>
 </html>

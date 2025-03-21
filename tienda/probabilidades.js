@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const urlParams = new URLSearchParams(window.location.search);
+    const urlParams = new URLSearchParams(window.location.search);//Parámetro de la url
     const textoDeUrl = urlParams.get('texto');
 
-    const apiUrl = `https://api-pokemon-nu.vercel.app/${textoDeUrl}`;
+    const apiUrl = `https://api-pokemon-nu.vercel.app/${textoDeUrl}`; //Crear url de la api
 
     listaPokemon = [];
 
@@ -65,12 +65,12 @@ function mostrarCartas(listaPokemon){
     });
 }
 
-
+//General pdf de cada expansión
 document.getElementById('generarPDF').addEventListener('click', function() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    const urlParams = new URLSearchParams(window.location.search);
+    const urlParams = new URLSearchParams(window.location.search);//Parámetro de la url
     const textoDeUrl = urlParams.get('texto');
 
     doc.setFontSize(16);

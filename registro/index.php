@@ -18,15 +18,24 @@ if (isset($_SESSION['usuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Registro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
 </head>
-<body class="bg-white d-flex justify-content-center align-items-center min-vh-100">
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light p-3 pb-0 m-0">
+        <div class="container-fluid m-0">
+            <a class="navbar-brand d-flex align-items-center" href="../">
+                <img src="../img/logo.png" alt="Logo" height="75" class="d-inline-block align-top">
+            </a>
+        </div>
+    </nav>
 
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="p-4 shadow-lg">
                     <div class="text-center mb-4">
-                        <img src="../img/logo.png" alt="Logo" class="img-fluid" style="max-width: 200px;">
+                        <img src="../img/logo.png" alt="Logo" class="img-fluid">
                     </div>
 
                     <h2 class="text-center mb-4">Registrarse</h2>
@@ -67,10 +76,17 @@ if (isset($_SESSION['usuario'])) {
                         <button type="submit" id="submitBtn" class="btn btn-dark w-100" disabled>Registrarse</button>
                     </form>
                 </div>
-                <a href="../"><button class="btn btn-primary btn-sm mt-3">Inicio</button></a>
             </div>
         </div>
     </div>
+    <footer>
+  <div class="container-fluid m-0 p-0">
+        <div class="col-12 p-2 d-flex bg-dark flex-column align-items-center text-white">
+        Powered by Diego Pérez Vila | 2º DAW | Aula Estudio
+        </div>
+    </div>
+  </footer>
+
 
     <script src="procesarRegistro.js"></script>
     <script src="validarForm.js"></script>

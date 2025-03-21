@@ -68,13 +68,17 @@ if (isset($_SESSION['rol'])) {
             <div class="col-12 col-md-4 p-3">
                 <h2 class="text-center">Últimas 5 Aperturas</h2>
                 <div class="col-12" >
-                    <div class="row p-3" id="ultimosPedidos"></div>
+                    <div class="row p-3" id="ultimosPedidos">
+                        <!-- Mostrar ultimas 5 aperturas vía js -->
+                    </div>
                 </div>
             </div>
             <div class="col-12 col-md-4 p-3">
                 <h2 class="text-center">Cartas pedidas</h2>
                 <div class="col-12 ">
-                    <div class="row p-3" id="cartasPedidas"></div>
+                    <div class="row p-3" id="cartasPedidas">
+                        <!-- Mostrar pedidos vía js -->
+                    </div>
                 </div>
             </div>
             <div class="col-12 col-md-4 p-3">
@@ -96,7 +100,7 @@ if (isset($_SESSION['rol'])) {
   <footer>
   <div class="container-fluid m-0 p-0">
         <div class="col-12 p-2 d-flex bg-dark flex-column align-items-center text-white">
-            crewgfer
+        Powered by Diego Pérez Vila | 2º DAW | Aula Estudio
         </div>
     </div>
   </footer>

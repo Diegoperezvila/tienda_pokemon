@@ -12,7 +12,7 @@ if (isset($_SESSION['usuario'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda</title>
+    <title>Probabilidades Cartas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="probabilidades.css">
@@ -20,6 +20,7 @@ if (isset($_SESSION['usuario'])) {
 
 </head>
 <body>
+    <!-- Mostrar si no está registrado -->
 <?php if (!$registrado): ?>
     <nav class="navbar navbar-expand-lg navbar-light p-3 pb-0 m-0">
         <div class="container-fluid m-0">
@@ -45,7 +46,7 @@ if (isset($_SESSION['usuario'])) {
             </div>
         </div>
     </nav>
-<?php else: ?>
+<?php else: ?><!-- Mostrar si está registrado -->
 <nav class="navbar navbar-expand-lg navbar-light p-3 pb-0 m-0">
     <div class="container-fluid m-0">
         <div class="d-flex flex-column flex-lg-row align-items-lg-center">
@@ -72,6 +73,7 @@ if (isset($_SESSION['usuario'])) {
                 <li class="nav-item">
                     <a class="nav-link text-white" href="wallet.php"><i class="bi bi-wallet2 mx-1"></i><span id="wallet"></span>€</a>
                 </li>
+                <!-- Mostrar al rol admin -->
                 <?php if ($_SESSION['rol'] == "admin"): ?>
                     <li class="nav-item d-lg-none">
                     <a class="nav-link text-white" href="../admin/">Admin</a>
@@ -84,6 +86,7 @@ if (isset($_SESSION['usuario'])) {
         </div>
 
         <div class="d-none d-lg-flex">
+            <!-- Mostrar al rol admin -->
         <?php if ($_SESSION['rol'] == "admin"): ?>
             <a href="../admin/">
                 <button class="btn btnNav btn-sm me-2">Admin</button>
@@ -104,12 +107,12 @@ if (isset($_SESSION['usuario'])) {
 <button id="generarPDF" class="btn btn-primary">Generar PDF</button>    
     <h2 class="text-center">PROBABILIDADES</h2>
     <div class="row mb-3" id="probabilidades" class="d-flex justify-content-center">
-
+    <!-- Mostrar probabilidades por js -->
     </div>
 
     <h2 class="text-center">CARTAS</h2>
     <div class="row" id="cartas" class="d-flex justify-content-center">
-
+<!-- Mostrar cartas por js -->
     </div>
 </div>
 

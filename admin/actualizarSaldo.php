@@ -15,22 +15,19 @@ try {
     $database = $client->selectDatabase('Tienda');
     $collection = $database->selectCollection('Usuarios');
 
-    // Obtener el cuerpo de la petición
     $data = json_decode(file_get_contents("php://input"), true);
     $usuario = isset($data['usuario']) ? trim($data['usuario']) : "";
     $totalDevolver = isset($data['totalDevolver']) ? trim($data['totalDevolver']) : "";
 
-    // Validar que se hayan recibido ambos parámetros
     if (empty($usuario) || empty($totalDevolver)) {
         echo json_encode(["status" => "error", "message" => "Faltan parámetros para actualizar el saldo"]);
         exit();
     }
     $totalDevolver = floatval($totalDevolver);
 
-    // Actualizar el campo 'cartera' sumando totalDevolver
     $updateResult = $collection->updateOne(
         ['usuario' => $usuario],
-        ['$inc' => ['cartera' => $totalDevolver]]
+        ['$inc' => ['cartera' => $totalDevolver]]//Incrementamos el campo cartera con el total a devolver, no sobreescribimos
     );
 
 

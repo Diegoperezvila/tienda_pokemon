@@ -27,7 +27,6 @@ try {
         ];
     }
 
-    // Enviar respuesta JSON
     echo json_encode(["status" => "success", "data" => $sobres], JSON_PRETTY_PRINT);
 } catch (Exception $e) {
     echo json_encode(["status" => "error", "message" => $e->getMessage()]);

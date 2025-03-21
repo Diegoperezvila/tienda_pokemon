@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
             enviosContainer.appendChild(sobreCard);
         });
 
+        //Añadimos un div al final que permite añadir un nuevo métido de envío
         const divNuevoEnvio = document.createElement("div");
         divNuevoEnvio.classList.add("col-12", "col-md-4", "p-2");
 
@@ -67,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             enviosContainer.appendChild(divNuevoEnvio);
 
+        //Añadimos el click a cada botón de guardar y nuevoEnvío
         document.querySelectorAll(".guardar").forEach(button => {
             button.addEventListener("click", function () {
                 const id = this.getAttribute("data-id");
@@ -120,12 +122,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let tipo = tarjeta.querySelector("[name='tipo']").value;
         let precio = tarjeta.querySelector("[name='precio']").value;
 
-        let datosActualizados = {
-            empresa: empresa,
-            tipo: tipo,
-            precio: precio
-        };
-
         fetch("nuevoEnvio.php", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -136,7 +132,6 @@ document.addEventListener("DOMContentLoaded", function () {
               if (data.error) {
                 console.error("Error:", data.error);
               } else {
-                console.log("Éxito:", data.mensaje);
                 fetchEnvios();
               }
             })
@@ -146,5 +141,5 @@ document.addEventListener("DOMContentLoaded", function () {
           
     }
 
-    fetchEnvios();
+    fetchEnvios();//Obtenemos todos los precios de envíos
 });

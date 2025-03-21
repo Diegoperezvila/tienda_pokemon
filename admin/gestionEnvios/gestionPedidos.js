@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             if (data.status === "success") {
-                console.log(data.data);
                 mostarPedidos(data.data);
             } else {
                 console.error("No se encontraron registros:", data.message);
@@ -31,13 +30,12 @@ document.addEventListener("DOMContentLoaded", function () {
         
             let botonesHTML = '';
         
-            // Condicionales para los botones
+            //Diferentes botones según el estado del pedido
             if (pedido.estado === "aceptado") {
                 botonesHTML = `<button class="btn btn-success enviar mt-2" data-id="${pedido.id}">Enviar</button>`;
             } else if (pedido.estado === "enviado") {
                 botonesHTML = `<button class="btn btn-success completado mt-2" data-id="${pedido.id}">Completado</button>`;
             } else if (pedido.estado === "pedido" || pedido.estado === "rechazado" || pedido.estado === "completado") {
-                // Botón deshabilitado para "pedido" y "rechazado"
                 botonesHTML = `<button class="btn btn-secondary mt-2" disabled>Sin Acción</button>`;
             }
         
@@ -61,8 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
             `;
         
             pedidosContainer.appendChild(pedidoCard);
-        
-            // Funcionalidad de los botones
+
             if (pedido.estado === "aceptado") {
                 const enviarButton = pedidoCard.querySelector('.enviar');
                 enviarButton.addEventListener('click', () => {
@@ -81,7 +78,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function guardarCambios(id, estado) {
-    
         let datosActualizados = {
             id: id,
             estado: estado
@@ -101,8 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 const estadoPedido = document.getElementById('estadoPedido');
                 
                 const nombre = inputNombre.value.trim();
-                const estado = estadoPedido.value;
-                fetchPedidos(nombre, estado);
+                const estado = estadoPedido.value.trim();
+                fetchPedidos(nombre, estado);//Solo actualizamos, dejamos los filtros de usuario y estado
             } else {
                 console.error("Error al actualizar el pedido: " + data.message);
             }
@@ -111,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     
 
-    fetchPedidos("", "");
+    fetchPedidos("", "");//Por defecto obtenemos los pedidos de todos los usuarios y cualquier estado
     const form = document.getElementById('buscarUsuarioForm');
     const inputNombre = document.getElementById('nombreUsuario');
     const estadoPedido = document.getElementById('estadoPedido');
@@ -120,8 +116,8 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
 
         const nombre = inputNombre.value.trim();
-        const estado = estadoPedido.value;
+        const estado = estadoPedido.value.trim();
 
-        fetchPedidos(nombre, estado);
+        fetchPedidos(nombre, estado);//Obtenemos los pedidos con ese usuario y estado
     });
 });

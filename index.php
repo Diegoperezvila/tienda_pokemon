@@ -17,7 +17,7 @@ if (isset($_SESSION['usuario'])) {
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-
+<!-- Mostrar si no esta registrado -->
 <?php if (!$registrado): ?>
     <nav class="navbar navbar-expand-lg navbar-light p-3 pb-0 m-0">
         <div class="container-fluid m-0">
@@ -43,7 +43,7 @@ if (isset($_SESSION['usuario'])) {
             </div>
         </div>
     </nav>
-<?php else: ?>
+<?php else: ?> <!-- Mostrar si está registrado -->
 <nav class="navbar navbar-expand-lg navbar-light p-3 pb-0 m-0">
     <div class="container-fluid m-0">
         <div class="d-flex flex-column flex-lg-row align-items-lg-center">
@@ -70,6 +70,7 @@ if (isset($_SESSION['usuario'])) {
                 <li class="nav-item">
                     <a class="nav-link text-white" href="./wallet/"><i class="bi bi-wallet2 mx-1"></i><span id="wallet"></span>€</a>
                 </li>
+                <!-- Mostrar al rol admin -->
                 <?php if ($_SESSION['rol'] == "admin"): ?>
                     <li class="nav-item d-lg-none">
                     <a class="nav-link text-white" href="./admin/">Cerrar Sesión</a>
@@ -82,6 +83,7 @@ if (isset($_SESSION['usuario'])) {
         </div>
 
         <div class="d-none d-lg-flex">
+            <!-- Mostrar al rol admin -->
         <?php if ($_SESSION['rol'] == "admin"): ?>
             <a href="./admin/">
                 <button class="btn btnNav btn-sm me-2">Admin</button>
@@ -146,21 +148,29 @@ if (isset($_SESSION['usuario'])) {
     <div class="row p-5 m-0">
         <div class="col-12 col-md-6 p-3">
             <h2 class="text-center">Formulario de Contacto</h2>
-            <form action="#" method="post">
+            <form id="contactForm" class="p-4 rounded shadow-lg bg-light">
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required placeholder="Introduce tu nombre">
                 </div>
+
                 <div class="mb-3">
                     <label for="email" class="form-label">Correo Electrónico</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
+                    <input type="email" class="form-control" id="email" name="email" required placeholder="Introduce tu correo electrónico">
                 </div>
+
                 <div class="mb-3">
                     <label for="mensaje" class="form-label">Mensaje</label>
-                    <textarea class="form-control" id="mensaje" name="mensaje" rows="5" required></textarea>
+                    <textarea class="form-control" id="mensaje" name="mensaje" rows="5" required placeholder="Escribe tu mensaje aquí..."></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Enviar</button>
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">Enviar</button>
+                </div>
             </form>
+
+
+
         </div>
 
         <div class="col-12 col-md-6 p-3">
@@ -207,11 +217,28 @@ if (isset($_SESSION['usuario'])) {
     </div>
 </div>
 
+<!-- Modal de envío de formulario exitoso -->
+<div class="modal fade" id="exitoForm" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Mensaje enviado con éxito
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   <footer>
   <div class="container-fluid m-0 p-0">
         <div class="col-12 p-2 d-flex bg-dark flex-column align-items-center text-white">
-            crewgfer
+        Powered by Diego Pérez Vila | 2º DAW | Aula Estudio
         </div>
     </div>
   </footer>
@@ -219,6 +246,7 @@ if (isset($_SESSION['usuario'])) {
 
 <script src="procesarLogin.js"></script>
 <script src="mostrarSaldo.js"></script>
+<script src="procesarForm.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

@@ -19,17 +19,15 @@ try {
     $inputJSON = file_get_contents('php://input');
     $input = json_decode($inputJSON, true);
 
-    // Validaciones
     if (!isset($input['id']) || !isset($input['cartera'])) {
         echo json_encode(["status" => "error", "message" => "Faltan datos requeridos"]);
         exit;
     }
 
     $id = new ObjectId($input['id']);
-    $cartera = (float) $input['cartera']; // Asegurar que sea numérico
-    $rol = $input['rol'] ?? null; // Evitar errores si no se proporciona rol
+    $cartera = (float) $input['cartera'];
+    $rol = $input['rol'] ?? null;
 
-    // Construcción del array de actualización
     $updateData = ['cartera' => $cartera];
     if ($rol !== null) {
         $updateData['rol'] = $rol;

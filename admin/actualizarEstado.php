@@ -16,27 +16,20 @@ try {
     $database = $client->selectDatabase('Tienda');
     $collection = $database->selectCollection('Pedidos');
 
-    // Obtener el cuerpo de la petición
     $data = json_decode(file_get_contents("php://input"), true);
     $id = isset($data['id']) ? trim($data['id']) : "";
     $nuevoEstado = isset($data['estado']) ? trim($data['estado']) : "";
 
-    // Validar que se hayan recibido ambos parámetros
     if (empty($id) || empty($nuevoEstado)) {
         echo json_encode(["status" => "error", "message" => "Faltan parámetros para actualizar el estado"]);
         exit();
     }
 
-    // Convertir el ID a ObjectId
     $objectId = new \MongoDB\BSON\ObjectId($id);
 
-    // Log para verificar si el ID es válido
-    error_log("ObjectId: " . $objectId);
-
-    // Realizar la actualización del estado en la base de datos
     $updateResult = $collection->updateOne(
-        ['_id' => $objectId],  // Filtro para encontrar el pedido por ID
-        ['$set' => ['estado' => $nuevoEstado]]  // Actualización del campo 'estado'
+        ['_id' => $objectId],
+        ['$set' => ['estado' => $nuevoEstado]]
     );
 
     // Comprobar si la actualización fue exitosa

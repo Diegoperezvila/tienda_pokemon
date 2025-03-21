@@ -43,6 +43,7 @@ if (!isset($_SESSION['usuario'])) {
                 <li class="nav-item">
                     <a class="nav-link text-white" href="../wallet"><i class="bi bi-wallet2 mx-1"></i><span id="wallet"></span>€</a>
                 </li>
+                <!-- Mostrar al rol admin -->
                 <?php if ($_SESSION['rol'] == "admin"): ?>
                 <li class="nav-item d-lg-none">
                     <a class="nav-link text-white" href="../admin/">Admin</a>
@@ -55,6 +56,7 @@ if (!isset($_SESSION['usuario'])) {
         </div>
 
         <div class="d-none d-lg-flex">
+          <!-- Mostrar al rol admin -->
     <?php if ($_SESSION['rol'] == "admin"): ?>
         <a href="../admin/">
             <button class="btn btnNav btn-sm me-2">Admin</button>
@@ -69,11 +71,11 @@ if (!isset($_SESSION['usuario'])) {
 </nav>
     <div class="container mt-5">
         <div class="row" id="divTienda">
-            
+            <!-- Mostrar la tienda -->
         </div>
     </div>
 
-
+<!-- Modal del sobre escogido -->
     <div class="modal fade" id="modalSobre" tabindex="-1" aria-labelledby="modalSobreLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -87,6 +89,7 @@ if (!isset($_SESSION['usuario'])) {
   </div>
 </div>
 
+<!-- Modal del envío -->
 <div class="modal fade" id="modalEnvio" tabindex="-1" aria-labelledby="modalEnvioLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -95,7 +98,7 @@ if (!isset($_SESSION['usuario'])) {
       </div>
       <div class="modal-body">
         <ul id="tiposEnvioList" class="list-group">
-          <!-- Aquí se agregarán dinámicamente los tipos de envío -->
+          <!-- Mostrar tipos envío vía js -->
         </ul>
         <button id="mejorVender" class="btn btn-success w-100 mt-3">Mejor quiero venderlo</button>
       </div>
@@ -103,6 +106,7 @@ if (!isset($_SESSION['usuario'])) {
   </div>
 </div>
 
+<!-- Modal no hay saldo -->
 <div class="modal fade" id="modalSaldo" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -122,7 +126,7 @@ if (!isset($_SESSION['usuario'])) {
 <footer>
   <div class="container-fluid m-0 p-0">
         <div class="col-12 p-2 d-flex bg-dark flex-column align-items-center text-white">
-            crewgfer
+        Powered by Diego Pérez Vila | 2º DAW | Aula Estudio
         </div>
     </div>
   </footer>

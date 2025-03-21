@@ -13,27 +13,26 @@ try {
     $client = new Client($uri, [], ['serverApi' => $apiVersion]);
 
     $database = $client->selectDatabase('Tienda');
-    $collection = $database->selectCollection('Usuarios');
+    $collection = $database->selectCollection('Tickets');
 
-    $data = json_decode(file_get_contents("php://input"), true);
-    $nombre = isset($data['nombre']) ? trim($data['nombre']) : "";
+    $result = $collection->find()->toArray();
 
-    //Si nombre es "" filtramos todos, si no por el nombre recibido
-    $filter = ($nombre !== "") ? ['usuario' => $nombre] : [];
-    
-    $result = $collection->find($filter)->toArray();
-
-    $usuarios = [];
+    $sobres = [];
     foreach ($result as $document) {
-        $usuarios[] = [
+        //Formateamos la fecha para legibilidad
+        $fechaFormateada = $document["fecha"] instanceof MongoDB\BSON\UTCDateTime ? $document["fecha"]->toDateTime()->format('d-m-Y H:i:s') : null;
+
+        $sobres[] = [
             "id" => (string) $document["_id"],
-            "usuario" => $document["usuario"],
-            "rol" => $document["rol"],
-            "cartera" => $document["cartera"]
+            "nombre" => $document["nombre"],
+            "email" => $document["email"],
+            "mensaje" => $document["mensaje"],
+            "fecha" => $fechaFormateada
         ];
     }
 
-    echo json_encode(["status" => "success", "data" => $usuarios], JSON_PRETTY_PRINT);
+    // Enviar respuesta JSON
+    echo json_encode(["status" => "success", "data" => $sobres], JSON_PRETTY_PRINT);
 } catch (Exception $e) {
     echo json_encode(["status" => "error", "message" => $e->getMessage()]);
 }

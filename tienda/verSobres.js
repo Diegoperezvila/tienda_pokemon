@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    
 
     function main(){
         let imageReplaced = false;
@@ -7,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 if (data.status === "success") {
-                    mostrarSobres(data.data);
+                    mostrarSobres(data.data);//Mostramos los sobres
                 } else {
                     console.error("Error al obtener los sobres:", data.message);
                 }
@@ -17,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
         function mostrarSobres(sobres) {
             const container = document.getElementById("divTienda");
             container.innerHTML = "";
-    
+
             sobres.forEach(sobre => {
                 const card = document.createElement("div");
                 card.classList.add("col-md-3", "mb-4");
@@ -57,17 +56,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (saldo >= parseFloat(precio)){
                         let newSaldo = saldo-precio;
                         newSaldo = newSaldo.toFixed(2);
-                        console.log(newSaldo);
-                        
                         actualizarSaldo(id, api, img, newSaldo, nombre);
                     }else{
-                        // Usar el siguiente código para abrir el modal
+                        //Mostrar qe no hay saldo
                         var modalSaldo = new bootstrap.Modal(document.getElementById('modalSaldo'), {
                             keyboard: false
                           });
-                          
-                          modalSaldo.show();  // Esto abrirá el modal
-  
+                          modalSaldo.show();
                     }
                 });
             });
@@ -88,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 if (data.status === "success") {
-                    document.getElementById("wallet").textContent = newSaldo;
+                    document.getElementById("wallet").textContent = newSaldo;//Actualizar wallet
                     comprar(id, api, img, nombre);
                 } 
                 else if (data.status === "error") {
@@ -105,7 +100,6 @@ document.addEventListener("DOMContentLoaded", function () {
         
     
         function comprar(id, api, img, nombre) {
-            
             fetch("restarSobre.php", {
                 method: "POST",
                 headers: {
@@ -127,15 +121,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     
         function abrir(api, img, nombre) {
-            
             const modalImg = document.getElementById("modalImg");
             const modal = new bootstrap.Modal(document.getElementById("modalSobre"));
             const cardInfo = document.getElementById("cardInfo");
     
-            // Reset variables y estilos
             imageReplaced = false;
             cardInfo.innerHTML = "";
-            modalImg.src = `../img/${img}`;
+            modalImg.src = `../img/${img}`;//Creamos url de la imagen
             modalImg.style.pointerEvents = "auto";
             
             modal.show();
@@ -143,11 +135,12 @@ document.addEventListener("DOMContentLoaded", function () {
             modalImg.onclick = function () {
                 if (!imageReplaced) {
                     modalImg.style.pointerEvents = "none";
-                    fetch(`https://api-pokemon-nu.vercel.app/${api}`)
+                    fetch(`https://api-pokemon-nu.vercel.app/${api}`)//Hacemos un fetch a la api
                         .then(response => response.json())
                         .then(data => {
-                            const randomCard = getRandomCard(data);
+                            const randomCard = getRandomCard(data);//Rendomizamos una carta
             
+                            //Añadimos al historial de aperturas
                             fetch("addSobreAbierto.php", {
                                 method: "POST",
                                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -166,8 +159,6 @@ document.addEventListener("DOMContentLoaded", function () {
                             modalImg.src = randomCard.image;
                             modalImg.style.maxHeight = "300px";
                             modalImg.style.objectFit = "contain";
-            
-                            console.log(randomCard.rarity);
             
                             cardInfo.innerHTML = `
                                 <h5><strong>${randomCard.number} - ${randomCard.name}</strong></h5>
@@ -188,6 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 enviarCarta(randomCard.number, randomCard.name, randomCard.image);
                             };
             
+                            //Obtenemos el precio de la carta por su rareza
                             fetch("precioscartas.php", {
                                 method: "POST",
                                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -196,15 +188,12 @@ document.addEventListener("DOMContentLoaded", function () {
                             .then(response => response.json())
                             .then(data => {
                                 if (data.status === "success") {
-                                    console.log(data.precio);
                                     document.getElementById("precioCarta").textContent = data.precio;
                                 } else {
-                                    console.error("Error al obtener el precio:", data.message);
                                     document.getElementById("precioCarta").textContent = "No disponible";
                                 }
                             })
                             .catch(error => {
-                                console.error("Error en la petición:", error);
                                 document.getElementById("precioCarta").textContent = "Error";
                             });
                             
@@ -217,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     return;
                                 }
                                 
-                                modal.hide();
+                                modal.hide();//Cerramos el modal de la carta
                                 const modalEnvio = new bootstrap.Modal(document.getElementById('modalEnvio'), {
                                     backdrop: 'static',
                                     keyboard: false
@@ -225,6 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 
                                 const tiposEnvioList = document.getElementById('tiposEnvioList');
                                 
+                                //Obtenemos los precios de los envíos
                                 fetch("preciosEnvios.php")
                                     .then(response => response.json())
                                     .then(data => {
@@ -240,27 +230,25 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 selectButton.classList.add('btn', 'btn-sm', 'btn-primary');
                                                 selectButton.textContent = 'Seleccionar';
                             
-                                                // Comprobar si el saldo es suficiente para el precio del envío
                                                 let envioPrecio = parseFloat(envio.precio);
-                                                if (saldo < envioPrecio) {
-                                                    // Si el saldo es insuficiente, deshabilitamos el botón
+                                                if (saldo < envioPrecio) {//Si no tenemos saldo deshabilitamos la opción de envío
                                                     selectButton.disabled = true;
                                                     selectButton.textContent = 'Saldo insuficiente';
-                                                    selectButton.classList.add('btn-secondary'); // Cambiamos el estilo a uno más deshabilitado
+                                                    selectButton.classList.add('btn-secondary');
                                                 } else {
                                                     selectButton.onclick = function () {
                                                         let saldoFinal = (saldo - envioPrecio).toFixed(2);
                                                         actualizarSaldo(saldoFinal);
-                                                        addPedido(precioNum, envio, numero, nombre, imagen);
-                                                        modalEnvio.hide();
-                                                        main();
+                                                        addPedido(precioNum, envio, numero, nombre, imagen);//Añadimos a pedidos
+                                                        modalEnvio.hide();//Cerramos el modal
+                                                        main();//Recargamos los sobres, para evitar falta de stock
                                                     };
                                                 }
                                                 
                                                 listItem.appendChild(selectButton);
                                                 tiposEnvioList.appendChild(listItem);
                                             });
-                                            modalEnvio.show();
+                                            modalEnvio.show();//Mostramos el modal de envios
                                         } else {
                                             console.error("Error al obtener los tipos de envío:", data.message);
                                         }
@@ -270,7 +258,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     });
 
                                     document.getElementById("mejorVender").onclick = function () {
-                                        modalEnvio.hide();
+                                        modalEnvio.hide();//Cerramos modal antes de vender la carta
                                         venderCarta();
                                     };
                             }
@@ -336,9 +324,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 .then(response => response.json())
                                 .then(data => {
                                     if (data.status === "success") {
-                                        // Actualizar la interfaz de usuario con el nuevo saldo
                                         document.getElementById("wallet").textContent = saldoFinal;
-                                        modal.hide();  // Cerrar el modal
+                                        modal.hide();
                                         main();
                                     } else if (data.status === "error") {
                                         console.log(data.message);
@@ -347,11 +334,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                     }
                                 })
                                 .catch(error => {
-                                    console.error(error); // Para que puedas ver qué error ocurrió
+                                    console.error(error);
                                 });
                             }
                             
-            
                             imageReplaced = true;
                         })
                         .catch(error => console.error("Error al cargar las cartas:", error));
@@ -359,6 +345,7 @@ document.addEventListener("DOMContentLoaded", function () {
             };        
         }
     
+        //Obtener carta aleatoria
         function getRandomCard(cards) {
             return cards[Math.floor(Math.random() * cards.length)];
         }

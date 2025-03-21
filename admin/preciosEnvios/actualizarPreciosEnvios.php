@@ -19,13 +19,11 @@ try {
     $inputJSON = file_get_contents('php://input');
     $input = json_decode($inputJSON, true);
 
-    // Asegurarnos de que stock sea un número entero y precio sea un decimal
     $id = new ObjectId($input['id']);
     $empresa = $input['empresa'];
     $tipo = $input['tipo'];
-    $precio = floatval($input['precio']);  // Convertimos el precio a número decimal
+    $precio = floatval($input['precio']); 
 
-    // Verificar que los valores sean correctos
     if (!is_numeric($precio)) {
         echo json_encode(["status" => "error", "message" => "El precio o el stock tienen un valor no válido."]);
         exit;

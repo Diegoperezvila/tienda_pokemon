@@ -78,5 +78,5 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error("Error en la actualización:", error));
     }
 
-    fetchPrCartas();
+    fetchPrCartas();//Obtenemos todos los precios de las rarezas
 });

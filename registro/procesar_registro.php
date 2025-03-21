@@ -59,9 +59,9 @@ try {
         'apellido' => $apellido,
         'usuario' => $usuario,
         'correo' => $correo,
-        'rol' => 'usuario',
+        'rol' => 'usuario',//Ponemos rol de usuario por defecto
         'password' => $passwordHash,
-        'cartera' => 0
+        'cartera' => 0//Inicializamos la cartera a 0
     ]);
 
     if ($resultado->getInsertedCount() == 1) {

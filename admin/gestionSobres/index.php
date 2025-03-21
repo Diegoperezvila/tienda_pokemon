@@ -65,6 +65,7 @@ if (isset($_SESSION['rol'])) {
 <div class="container-fluid m-0 p-0 mt-2">
     <div class="col-12 m-0">
         <div class="row m-0" id="sobres">
+            <!-- Mostrar sobres vía js -->
         </div>
     </div>
 </div>
@@ -73,7 +74,7 @@ if (isset($_SESSION['rol'])) {
   <footer>
   <div class="container-fluid m-0 p-0">
         <div class="col-12 p-2 d-flex bg-dark flex-column align-items-center text-white">
-            crewgfer
+            Powered by Diego Pérez Vila | 2º DAW | Aula Estudio
         </div>
     </div>
   </footer>

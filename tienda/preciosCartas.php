@@ -15,20 +15,17 @@ try {
     $database = $client->selectDatabase('Tienda');
     $collection = $database->selectCollection('PreciosCartas');
 
-    // Verificar si se recibió el parámetro "type"
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (!isset($_POST['type']) || empty(trim($_POST['type']))) {
             echo json_encode(["status" => "error", "message" => "El tipo de rareza es obligatorio."]);
             exit;
         }
 
-        $rareza = trim($_POST['type']); // Obtener y limpiar la rareza recibida
+        $rareza = trim($_POST['type']);
 
-        // Buscar en MongoDB los documentos con la rareza especificada
         $result = $collection->findOne(["Rareza" => $rareza]);
 
         if ($result) {
-            // Enviar el precio correspondiente
             echo json_encode([
                 "status" => "success",
                 "precio" => $result["Precio"]

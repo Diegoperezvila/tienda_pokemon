@@ -17,8 +17,11 @@ try {
     $collection = $database->selectCollection('Pedidos');
 
     $data = json_decode(file_get_contents("php://input"), true);
-    $usuario = isset($data['usuario']) ? trim($data['usuario']) : "";
+    $orden = isset($data['orden']) ? trim($data['orden']) : "";
     $estado = isset($data['estado']) ? trim($data['estado']) : "";
+
+    session_start();
+    $usuario = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : "";
 
     $filter = [];
     if (!empty($usuario)) {
@@ -28,12 +31,18 @@ try {
         $filter['estado'] = $estado;
     }
 
-    $result = $collection->find($filter)->toArray();
+    $sort = [];
+    //Si orden es recientes filtramos por recientes
+    if ($orden === "recientes") {
+        $sort = ['fecha' => -1];
+    } else {
+        $sort = ['fecha' => 1];
+    }
+
+    $result = $collection->find($filter, ['sort' => $sort])->toArray();
 
     $pedidos = [];
     foreach ($result as $document) {
-
-        //Formateamos la fecha
         $fecha = $document["fecha"] instanceof MongoDB\BSON\UTCDateTime ? $document["fecha"]->toDateTime()->format('d-m-Y H:i:s') : null;
 
         $pedidos[] = [

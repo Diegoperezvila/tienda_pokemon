@@ -32,7 +32,6 @@ try {
 
     $cartera = floatval($input['cartera']);
 
-    // Actualizar directamente por usuario
     $updateResult = $collection->updateOne(
         ['usuario' => $usuario],
         ['$set' => ['cartera' => $cartera]]

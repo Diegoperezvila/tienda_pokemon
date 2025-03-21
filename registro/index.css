@@ -19,37 +19,6 @@ nav {
   .navbar-toggler-icon {
     filter: invert(1);
   }
-  
-
-/*Estilos para las tarjetas*/
-.card {
-  border-radius: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15);
-}
-
-.card .form-control {
-  background-color: #f7f7f7;
-  border: none;
-  border-radius: 15px;
-  padding: 10px;
-  font-size: 1em;
-  transition: border-color 0.3s;
-}
-
-.card label {
-  font-weight: bold;
-  color: black;
-  margin-bottom: 5px;
-  font-size: 1em;
-}
-
 
 /*Footer pegado al final*/
 html,
@@ -64,4 +33,17 @@ body {
 
 .container-fluid {
   flex-grow: 1;
+  margin-top: 25px
+}
+
+
+/*Estilos imagen registro*/
+.container-fluid img{
+    max-width: 150px;
+}
+
+@media (max-width: 767px) {
+    .container-fluid img{
+        max-width: 100px;
+    }
 }

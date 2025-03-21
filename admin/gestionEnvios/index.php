@@ -18,7 +18,7 @@ if (isset($_SESSION['rol'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gestión de Usuarios</title>
+    <title>Gestión de Envíos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="gestionEnvios.css">
 </head>
@@ -65,27 +65,27 @@ if (isset($_SESSION['rol'])) {
 <div class="container-fluid m-0 p-0 mt-2">
     <div class="row m-0 px-5 mt-5">
         <div class="col-12 col-md-6">
-        <form id="buscarUsuarioForm" class="d-flex">
-        <input type="text" id="nombreUsuario" class="form-control me-2" placeholder="Usuario">
-        
-        <select id="estadoPedido" class="form-control me-2">
-        <option value="" selected>Selecciona el estado</option>
-        <option value="pedido">Pedido</option>
-        <option value="rechazado">Rechazado</option>
-        <option value="aceptado">Aceptado</option>
-        <option value="enviado">Enviado</option>
-        <option value="completado">Completado</option>
-        </select>
+            <form id="buscarUsuarioForm" class="d-flex">
+                <input type="text" id="nombreUsuario" class="form-control me-2" placeholder="Usuario">
 
-        
-        <button type="submit" class="btn btn-primary">Buscar</button>
-        </form>
+                <select id="estadoPedido" class="form-control me-2">
+                    <option value="" selected>Selecciona el estado</option>
+                    <option value="pedido">Pedido</option>
+                    <option value="rechazado">Rechazado</option>
+                    <option value="aceptado">Aceptado</option>
+                    <option value="enviado">Enviado</option>
+                    <option value="completado">Completado</option>
+                </select>
+
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
 
         </div>
     </div>
 
     <div class="col-12 m-0">
         <div class="row m-0 p-5" id="pedidos">
+            <!-- Mostrar pedidos vía js -->
         </div>
     </div>
 </div>
@@ -94,7 +94,7 @@ if (isset($_SESSION['rol'])) {
   <footer>
   <div class="container-fluid m-0 p-0">
         <div class="col-12 p-2 d-flex bg-dark flex-column align-items-center text-white">
-            crewgfer
+            Powered by Diego Pérez Vila | 2º DAW | Aula Estudio
         </div>
     </div>
   </footer>

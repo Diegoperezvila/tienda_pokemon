@@ -1,3 +1,4 @@
+/*Estilos nav*/
 nav {
     background-color: rgb(0, 43, 161);
     border-bottom: 3px solid rgba(0, 34, 185, 0.603);
@@ -19,6 +20,7 @@ nav {
     filter: invert(1);
   }
   
+  /*Estilos para las tarjetas*/
 
   .card-container { 
     display: flex; 
@@ -43,12 +45,13 @@ nav {
     margin-top: 10px; 
 }
 
+/*Estilos para las probabilidades*/
 #probabilidades {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; /* Esto coloca los elementos en una columna */
-    text-align: center; /* Centra el texto */
+    flex-direction: column;
+    text-align: center;
     margin-top: 20px;
 }
 

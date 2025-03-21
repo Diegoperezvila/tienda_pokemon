@@ -34,9 +34,9 @@ try {
     ]);
 
     if ($resultado->getInsertedCount() == 1) {
-        echo json_encode(["mensaje" => "Registro exitoso"]);
+        echo json_encode(["mensaje" => "Nuevo envío añadido"]);
     } else {
-        echo json_encode(["error" => "No se pudo completar el registro"]);
+        echo json_encode(["error" => "No se pudo añadir el envío"]);
     }
 } catch (Exception $e) {
     echo json_encode(["error" => "Error en la base de datos: " . $e->getMessage()]);

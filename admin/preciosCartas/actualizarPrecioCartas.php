@@ -19,12 +19,10 @@ try {
     $inputJSON = file_get_contents('php://input');
     $input = json_decode($inputJSON, true);
 
-    // Asegurarnos de que stock sea un número entero y precio sea un decimal
     $id = new ObjectId($input['id']);
     $rareza = $input['rareza'];
-    $precio = floatval($input['precio']);  // Convertimos el precio a número decimal
+    $precio = floatval($input['precio']);
 
-    // Verificar que los valores sean correctos
     if (!is_numeric($precio)) {
         echo json_encode(["status" => "error", "message" => "El precio o el stock tienen un valor no válido."]);
         exit;
@@ -38,7 +36,7 @@ try {
     if ($updateResult->getModifiedCount() > 0) {
         echo json_encode(["status" => "success", "message" => "Precio actualizado correctamente."]);
     } else {
-        echo json_encode(["status" => "error", "message" => "No se pudo actualizar el precio. El ID proporcionado no fue encontrado o no se realizaron cambios."]);
+        echo json_encode(["status" => "error", "message" => "No se pudo actualizar el precio."]);
     }
 } catch (Exception $e) {
     echo json_encode(["status" => "error", "message" => $e->getMessage()]);

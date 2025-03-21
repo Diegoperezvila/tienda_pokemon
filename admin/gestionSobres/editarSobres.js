@@ -89,5 +89,5 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error("Error en la actualización:", error));
     }
 
-    fetchSobres();
+    fetchSobres();//Mostramos todos los sobres
 });

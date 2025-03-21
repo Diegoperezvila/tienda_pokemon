@@ -41,17 +41,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function verPedidos(){
         fetch('verPedidos.php', {
-            method: 'POST',  // Usamos POST para enviar datos
+            method: 'POST',
             headers: {
-                'Content-Type': 'application/json' // Indicamos que enviamos JSON
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ estado: 'pedido' }) // Enviamos solo el estado
+            body: JSON.stringify({ estado: 'pedido' }) //Solo los que tengan el estado pedido
         })
         .then(response => response.json())
         .then(data => {
             if (data.status === "success") {
-                console.log(data.data);
-                
                 mostrarUltimosPedidos(data.data);
             } else {
                 console.error("No se encontraron registros:", data.message);
@@ -70,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const pedidoDiv = document.createElement("div");
                 pedidoDiv.classList.add("row", "mb-3");
             
-                // Crear un id único para cada botón, basado en el id del pedido
+                //Creamos un id único para los botones de aceptar y rechazar de cada tarjeta
                 const rechazarId = `rechazar-${pedido.id}`;
                 const aceptarId = `aceptar-${pedido.id}`;
             
@@ -97,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     actualizarEstado(pedido.id, "rechazado");
                     let totalDevolver = parseFloat(pedido.precioCarta)+parseFloat(pedido.precioEnvio);
                     totalDevolver=totalDevolver.toFixed(2);
-                    actualizarWallet(pedido.usuario, totalDevolver);
+                    actualizarWallet(pedido.usuario, totalDevolver);//Debemos actualizar wallet para darle el dinero de la carta y envío al rechazarla
                 };
 
                 function actualizarWallet(usuario, totalDevolver){
@@ -110,7 +108,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     })
                     .then(response => response.json())
                     .then(data => {
-                        console.log(data);  // Verifica aquí el mensaje completo
                         if (data.status === "success") {
                             console.log("Actualizado");
                         } else {
@@ -130,11 +127,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     })
                     .then(response => response.json())
                     .then(data => {
-                        console.log(data);  // Verifica aquí el mensaje completo
                         if (data.status === "success") {
-                            console.log("Actualizado");
-                            // Aquí puedes agregar código adicional para mostrar los cambios en la interfaz
-                            verPedidos(); // Asegúrate de que esta función esté correctamente definida para actualizar la vista de los pedidos
+                            verPedidos();
                         } else {
                             console.error("No se encontraron registros:", data.message);
                         }
@@ -148,6 +142,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     }
     
-    verAperturas();
-    verPedidos();
+    verAperturas();//Mostramos las últimas 5 aperturas
+    verPedidos();//Mostramos los pedidos
 });

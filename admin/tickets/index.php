@@ -18,9 +18,9 @@ if (isset($_SESSION['rol'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Precios Cartas</title>
+    <title>Tickets</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="preciosCartas.css">
+    <link rel="stylesheet" href="tickets.css">
 </head>
 <body>
 
@@ -61,10 +61,11 @@ if (isset($_SESSION['rol'])) {
 </nav>
 
 
+
 <div class="container-fluid m-0 p-0 mt-2">
     <div class="col-12 m-0">
-        <div class="row m-0" id="precios">
-            <!-- Mostrar precios de las rarezas vía js -->
+        <div class="row m-0" id="tickets">
+            <!-- Mostrar tickets vía js -->
         </div>
     </div>
 </div>
@@ -79,7 +80,7 @@ if (isset($_SESSION['rol'])) {
   </footer>
 
 
-<script src="precioscartas.js"></script>
+<script src="verTickets.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

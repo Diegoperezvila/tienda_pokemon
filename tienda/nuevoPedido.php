@@ -46,12 +46,11 @@ try {
         'empresaEnvio' => $empresaEnvio,
         'tipoEnvio' => $tipoEnvio,
         'precioEnvio' => $precioEnvio,
-        'fecha' => new \MongoDB\BSON\UTCDateTime(),
+        'fecha' => new \MongoDB\BSON\UTCDateTime(),//Guardar hora actual UTC
         'imagen' => $imagen,
         'estado' => 'pedido'
     ];
 
-    // Insertar el nuevo pedido en la colección
     $insertResult = $collection->insertOne($pedido);
 
     if ($insertResult->getInsertedCount() > 0) {

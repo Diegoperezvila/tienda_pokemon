@@ -32,7 +32,7 @@ try {
         if ($producto['stock'] > 0) {
             $resultado = $collection->updateOne(
                 ['_id' => $objectId],
-                ['$inc' => ['stock' => -1]]
+                ['$inc' => ['stock' => -1]]//Restar 1 al stock
             );
 
             if ($resultado->getModifiedCount() == 1) {
